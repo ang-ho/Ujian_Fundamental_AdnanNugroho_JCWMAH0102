@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Bisa | Yakin Kamu Bisa</title>
+    <style>
+        table,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+            align-content: center;
+            text-align: center;
+            
+        }
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        fieldset {
+            background-color: #eeeeee;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            background-color: gray;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div>
+            <fieldset id="menuPage" style="width: 50vw;">
+                <legend>Selamat Datang</legend>
+                <button type="button" onclick="btMenu('login')">Masuk</button>
+                <button type="button" onclick="btMenu('regis')">Registrasi</button>
+                <!-- button yang akan menampilkan masing2 fieldset sesuai dengan ID
+                - Ini lanjut ke function button -->
+            </fieldset>
+            <fieldset id="fieldRegister" style="width: 50vw;">
+                <legend>Register</legend>
+                <form id="formRegister">
+                    <label>Silahkan Registrasi</label> <br><br>
+                    <input type="text" id="regisName" placeholder="Masukkan Nama" /><br>
+                    <input type="email" id="regisEmail" placeholder="Masukkan Email" /><br>
+                    <input type="password" id="regisPassword" placeholder="Masukkan password" /><br><br>
+                    <button type="button" onclick="btRegis()">Daftar</button>
+                </form>
+            </fieldset>
+            <fieldset id="fieldLogin" style="width: 50vw;">
+                <legend>Log In</legend>
+                <form id="formLogin">
+                    <label>Silahkan Log In</label> <br><br>
+                    <input type="text" id="loginUsername" placeholder="Masukkan Username" /><br>
+                    <input type="password" id="loginPassword" placeholder="Masukkan Password" /><br><br>
+                    <button type="button" id="btLogIn" onclick="btLogin()">Log In</button>
+                    <button type="button" id="btLogOut" onclick="btLogout()" disabled="true">Log Out</button>
+                </form>
+            </fieldset>
+            <fieldset id="fieldTambahProduk" style="width: 50vw;">
+                <legend>Tambah Produk</legend>
+                <form id="formTambahProduk">
+                    <label>Produk Apa yang Ingin Kamu Jual?</label> <br><br>
+                    <input type="text" id="add_nama" placeholder="Nama Produk" /><br>
+                    <input type="text" id="add_foto" placeholder="Foto Produk" /><br>
+                    <input type="text" id="add_desk" placeholder="Deskripsi" /><br>
+                    <input type="number" id="add_stock" placeholder="Stock Produk" /><br>
+                    <input type="number" id="add_harga" placeholder="Harga Produk" /><br>
+                    <button type="button" onclick="btAddProduk()">Tambah</button>
+                </form>
+            </fieldset>
+            <fieldset id="fieldListProduk" style="width: 65vw;">
+                <legend>List Produk Kami</legend>
+                <!-- Search Data, Stock, Harga -->
+                <input type="text" id="cariProduk" onchange="btCariProduk()" placeholder="Cari Nama Produk" />
+                <button type="button"onclick="btCariProduk()">Cari</button>
+                <input type="number" id="minStock" placeholder="Min. Stock" style="width: 80px;" />
+                <input type="number" id="maxStock" placeholder="Max. Stock" style="width: 80px;" />
+                <button type="button" onclick="btCariStock()">Cari Stock</button>
+                <input type="number" id="minHarga" placeholder="Min. Harga" style="width: 80px;" />
+                <input type="number" id="maxHarga" placeholder="Max. Harga" style="width: 80px;" />
+                <button type="button" onclick="btCariHarga()">Cari Harga</button>
+                <select id="SortData" onclick="btSortData()">
+                    <option value="namaAsc">Nama</option>
+                    <option value="hargaAsc">Harga Terendah</option>
+                    <option value="hargaDsc">Harga Tertinggi</option>
+                    <option value="stockAsc">Stock Terendah</option>
+                    <option value="hargaAsc">Stock Tertinggi</option>
+                </select>
+                <table>
+                    <thead>
+                        <th>No</th>
+                        <th style="width: 150px;">Foto Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Deskripsi</th>
+                        <th>Stock</th>
+                        <th>Harga</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="listProduk">
+
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset id="cart-page" style="width: 65vw;">
+                <legend>Keranjang Belanja</legend>
+                <table>
+                    <thead>
+                        <th>No</th>
+                        <th>Foto Produk</th>
+                        <th>Nama Produk</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Price Total</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="listKeranjang">
+
+                    </tbody>
+                </table>
+            </fieldset>
+            <fieldset id="CheckOut" style="width: 65vw;">
+                <legend>Total Belanjaan Kamu</legend>
+                <table>
+                    <thead>
+                        <th>Total Payment</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody id="ListCheckOut">
+
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+    </center>
+</body>
+<script src="./sistemMarket.js"></script>
+
+</html>

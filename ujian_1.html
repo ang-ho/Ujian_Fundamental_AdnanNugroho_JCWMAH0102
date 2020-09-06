@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drawing Shape</title>
+  </head>
+  <h2>Drawing Shape</h2>
+  <select name="pilihan" id="input">
+    <option value="persegi">Persegi</option>
+    <option value="segitigaSKi">Segitiga Siku Kiri</option>
+    <option value="segitigaSKa">Segitiga Siku Kanan</option>
+    <option value="pyramid">Pyramid</option>
+  </select>
+  <br />
+  <h5>Size of Shape:</h5>
+  <input type="number" id="number" placeholder="masukkan angka" />
+  <button type="button" id="generate" onclick="btGenerate()">Generate</button>
+  <body id="generateShape"></body>
+  <script>
+    let angka = document.getElementById("number").value;
+    console.log(angka);
+
+    btGenerate = () => {
+      let cetak = "";
+      if (document.getElementById("input").value == `persegi`) {
+        // Buat Shape Persegi
+        for (let baris = 1; baris <= angka; baris++) {
+          for (let kolom = 1; kolom <= angka; kolom++) {
+            if (kolom % 2 == 0) {
+              cetak += "# ";
+            } else {
+              cetak += "* ";
+            }
+            cetak += "";
+          }
+          cetak += "<br/>";
+        }
+        document.getElementById("generateShape").innerHTML = cetak;
+        console.log(cetak)
+      } else if (document.getElementById("input").value == `SegitigaSKi`) {
+        // Buat Segitiga Siku Kiri
+        for (let baris = 1; baris <= angka; baris++) {
+          for (let kolom = 1; kolom <= baris; kolom++) {
+            if (kolom % 2 == 0) {
+              cetak1 += "# ";
+            } else {
+              cetak1 += "* ";
+            }
+            cetak1 += "";
+          }
+          cetak1 += "<br/>";
+        }
+        document.getElementById("generateShape").innerHTML = cetak;
+        console.log(cetak)
+      } else if (document.getElementById("input").value == `SegitigaSKa`) {
+        // Buat Segitiga Siku Kanan
+        for (let i = 1; i <= angka; i++) {
+          for (let j = 4; j >= i; j--) {
+            cetak += " ";
+          }
+          for (let k = i; k >= 1; k--) {
+            if (k % 2 != 0) {
+              cetak += "*";
+            } else {
+              cetak += "#";
+            }
+          }
+          cetak += "<br/>";
+        }
+        document.getElementById("generateShape").innerHTML = cetak;
+        console.log(cetak)
+      } else if (document.getElementById("input").value == `pyramid`) {
+        // Buat Segitiga Pyramid
+        for (let baris = 1; baris <= angka; baris++) {
+          for (let kolom = 5; kolom >= baris; kolom--) {
+            cetak += " ";
+          }
+          for (let k = baris; k >= 1; k--) {
+            if (k % 2 == 0) {
+              cetak += "# ";
+            } else {
+              cetak += "* ";
+            }
+            cetak += "";
+          }
+          cetak += "<br/>";
+        }
+        document.getElementById("generateShape").innerHTML = cetak;
+        console.log(cetak)
+      } else {
+
+      }
+    };
+  </script>
+</html>
